@@ -1,3 +1,12 @@
 * {
-    margin: 0;
+    box-sizing: border-box;
+}
+
+.container {
+    height: 100vh;
+   
+}
+.container div {
+    border: 2px dashed black;
+    padding: 20px;
 }
