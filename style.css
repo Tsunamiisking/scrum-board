@@ -1,12 +1,49 @@
 * {
     box-sizing: border-box;
+
+
+}
+body {
+    background-color: #0E86D4;
 }
 
-.container {
-    height: 100vh;
+.container .row{
+    min-width: 80vw;
+
    
 }
-.container div {
+.col {
+    margin: 20px;
+    max-width: 100vw;
+    border-radius: 10px;
+}
+.primary-color {
+    background-color: #C3CEDA;
+}
+.secondary-color {
+    background-color: #0C4160;
+
+
+}
+/* .container div {
     border: 2px dashed black;
     padding: 20px;
+} */
+.container div span h3 {
+    text-align: center;
+    border-bottom: 2px solid black ;
+    padding: 5px;
+    font-size: 20px;
+    margin: 10px 0;
+}
+.container .row .button {
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+
+}
+button {
+    padding-left: 30px;
+    padding-right: 30px;
+
 }
