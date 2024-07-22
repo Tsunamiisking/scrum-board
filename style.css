@@ -2,28 +2,36 @@
     box-sizing: border-box;
 
 }
+
 body {
     background-color: #0E86D4;
 }
+
 .container {
     height: 100vh;
+    margin-top: 50px;
 }
-.container .row{
+
+.container .row {
     max-width: 90vw;
+
 }
+
 .form-elements {
     display: flex;
     align-items: center;
     justify-content: center;
     vertical-align: middle;
-    margin: 20px 0;
+    margin: 10px 0;
 }
+
 .container .row .input {
     display: flex;
     justify-content: center;
     flex: 1;
-    margin-right: 5px;
+    margin-right: 10px;
 }
+
 input {
     width: 100%;
     border-radius: 10px;
@@ -31,14 +39,17 @@ input {
     padding: 0 10px;
     height: 35px;
 }
+
 input:focus {
     outline: none;
 }
+
 .container .row .button {
     display: flex;
     justify-content: center;
 
 }
+
 .container button {
     padding: 10px 5px;
     border-radius: 50%;
@@ -46,33 +57,36 @@ input:focus {
     font-size: 15px;
 
 }
-.container input{
-    
-}
+
+.container input {}
+
 .backlog-item {
-    height: 100px;
+    padding: 10px 10px;
 }
-.col-sm{
+
+.col-sm {
     margin: 10px;
     min-width: 40vw;
     border-radius: 10px;
     min-height: 200px;
 }
+
 .primary-color {
     background-color: #C3CEDA;
 }
+
 .secondary-color {
     background-color: #0C4160;
 
 
 }
+
 /* .container div {
     border: 2px dashed black;
     padding: 20px;
 } */
 .container div span h3 {
     text-align: center;
-    border-bottom: 2px solid black ;
     padding: 5px;
     font-size: 20px;
     margin: 10px 0;
