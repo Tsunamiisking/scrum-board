@@ -1,14 +1,9 @@
 const backlogContainer = document.getElementById('backlog');
 const todoItems = document.getElementById('todo-items');
 const inProgressItems = document.getElementById('inprogress-items');
-const FinishedItems = document.getElementById('finished-items');
+const FinishedItems = document.getElementById('finished-items'); 
 
 
-
-function debugStuff() {
-    let items = document.querySelectorAll('.backlog-item');
-    console.log(items)
-}
 
 
 function formatDate(date) {
@@ -36,14 +31,13 @@ document.getElementById('form').onsubmit = (e) => {
     backlogItem.className = 'backlog-item'
     document.getElementById('backlog-items').appendChild(backlogItem)
     input.value = '';
-    debugStuff()
 }
 
 function dragger(className, parentNode) {
     function applyDragger(items) {
         items.forEach(item => {
             item.setAttribute('draggable', 'true'); // Ensure items are draggable
-
+           
             item.addEventListener('dragstart', (e) => {
                 let selected = e.target;
 
