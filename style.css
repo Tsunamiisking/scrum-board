@@ -55,30 +55,52 @@ input:focus {
     border-radius: 50%;
     font-weight: 400;
     font-size: 15px;
+    background-color: #0C4160;
+    color: #C3CEDA;
+    transition: .3s;
 
+}
+.container button:hover {
+    background-color: #0c4160dc;
+}
+.container button:active{
+    background-color: #0c4160af;
 }
 
 .container input {}
 
 .backlog-item {
-    padding: 10px 10px;
+    padding: 10px 15px;
+    background-color: #0C4160;
+    color: #C3CEDA;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    transition: .2s;
 }
+.backlog-item:hover {
+    transform: translateY(2px);
+}
+/* .backlog-item:focus {
+    transform: scale(1.02);
+} */
+
 
 .col-sm {
     margin: 10px;
     min-width: 40vw;
     border-radius: 10px;
-    min-height: 200px;
-}
-
+    /* height: min(400px, 100%); */
+    min-height: 400px; /* Sets the minimum height to 400px */
+    height: auto; /* Allows height to increase as content is added */
+    max-height: 100%; /* Ensures it doesn't exceed the container's height */
+    overflow: auto; /* Adds scroll if content exceeds max-height */
+} 
 .primary-color {
     background-color: #C3CEDA;
 }
 
 .secondary-color {
     background-color: #0C4160;
-
-
 }
 
 /* .container div {
