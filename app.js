@@ -2,8 +2,12 @@ const backlogContainer = document.getElementById('backlog');
 const todoItems = document.getElementById('todo-items');
 const inProgressItems = document.getElementById('inprogress-items');
 const FinishedItems = document.getElementById('finished-items'); 
+// const storedBacklog = JSON.parse(localStorage.getItem('backlogs'))
 
 
+// function saveToLocalStorage (key, value) {
+//     localStorage.setItem(key, JSON.stringify(value))
+// }
 
 
 function formatDate(date) {
@@ -33,7 +37,7 @@ document.getElementById('form').onsubmit = (e) => {
     input.value = '';
 }
 
-function dragger(className, parentNode) {
+function dragger(className, parentNode, newClass) {
     function applyDragger(items) {
         items.forEach(item => {
             item.setAttribute('draggable', 'true'); // Ensure items are draggable
@@ -48,6 +52,10 @@ function dragger(className, parentNode) {
                 const handleDrop = (e) => {
                     e.preventDefault();
                     parentNode.appendChild(selected);
+                    // Reset the class of the dropped item to newClass
+
+                    selected.className = newClass;
+                    saveToLocalStorage (newClass, item)
                     selected = null;
                 };
 
@@ -77,13 +85,26 @@ function dragger(className, parentNode) {
             });
         });
     });
-
     observer.observe(document.body, { childList: true, subtree: true });
 }
 
-// Recieve Backlog
+// Todo Recieve Backlog
 document.addEventListener('DOMContentLoaded', () => {
-    dragger('.backlog-item', todoItems)
-    dragger('.backlog-item', inProgressItems)
-    dragger('.backlog-item', FinishedItems)
-})
+    dragger('.backlog-item', todoItems, 'todo-item');
+    dragger('.todo-item', inProgressItems, 'inprogress-item');
+    dragger('.inprogress-item', FinishedItems, 'final-item ');
+
+});
+
+
+// Recieve Backlog
+// document.addEventListener('DOMContentLoaded', () => {
+//     dragger('.backlog-item', todoItems)
+//     dragger('.backlog-item', inProgressItems)
+//     dragger('.backlog-item', FinishedItems)
+// })
+
+// function renderStoredElement() {
+
+// }
+// console.log(JSON.parse(localStorage.getItem('todo-item')))
