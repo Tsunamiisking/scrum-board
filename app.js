@@ -1,27 +1,39 @@
 const backlogContainer = document.getElementById('backlog');
 const todoItems = document.getElementById('todo-items');
 const inProgressItems = document.getElementById('inprogress-items');
-const FinishedItems = document.getElementById('finished-items'); 
+const FinishedItems = document.getElementById('finished-items');
 // const storedBacklog = JSON.parse(localStorage.getItem('backlogs'))
 
 
-// function saveToLocalStorage (key, value) {
-//     localStorage.setItem(key, JSON.stringify(value))
-// }
+function saveToLocalStorage(itemKey, item) {
+    // Retrieve existing items from localStorage or create a new array if none exists
+    let existingItems = JSON.parse(localStorage.getItem(itemKey)) || [];
 
+    // Add the new item to the array
+    existingItems.push(item.outerHTML); // Save the HTML content of the item
+
+    // Save the updated array back to localStorage
+    localStorage.setItem(itemKey, JSON.stringify(existingItems));
+}
+
+function saveItems(itemKey, listOfClass) {
+    listOfClass.forEach(item => {
+        saveToLocalStorage(itemKey, item)
+    })
+}
 
 function formatDate(date) {
     const months = [
-      'January', 'February', 'March', 'April', 'May', 'June', 
-      'July', 'August', 'September', 'October', 'November', 'December'
+        'January', 'February', 'March', 'April', 'May', 'June',
+        'July', 'August', 'September', 'October', 'November', 'December'
     ];
-    
+
     const day = date.getDate();
     const month = months[date.getMonth()]; // getMonth() returns a zero-based index
     const year = date.getFullYear();
-    
+
     return `${month} ${day}, ${year}`;
-  }
+}
 
 
 document.getElementById('form').onsubmit = (e) => {
@@ -37,11 +49,11 @@ document.getElementById('form').onsubmit = (e) => {
     input.value = '';
 }
 
-function dragger(className, parentNode, newClass) {
+function dragger(prevName, parentNode, newClass) {
     function applyDragger(items) {
         items.forEach(item => {
             item.setAttribute('draggable', 'true'); // Ensure items are draggable
-           
+
             item.addEventListener('dragstart', (e) => {
                 let selected = e.target;
 
@@ -55,7 +67,6 @@ function dragger(className, parentNode, newClass) {
                     // Reset the class of the dropped item to newClass
 
                     selected.className = newClass;
-                    saveToLocalStorage (newClass, item)
                     selected = null;
                 };
 
@@ -72,14 +83,18 @@ function dragger(className, parentNode, newClass) {
     }
 
     // Apply dragger to existing items
-    let items = document.querySelectorAll(className);
+    let items = document.querySelectorAll(prevName);
     applyDragger(items);
 
+    // Save items to localStorage
+    saveItems(prevName, items);
+
+    // saveToLocalStorage(parentNode, JSON.stringify(data.map()))
     // Observe for new items being added to the DOM
     const observer = new MutationObserver(mutations => {
         mutations.forEach(mutation => {
             mutation.addedNodes.forEach(node => {
-                if (node.nodeType === 1 && node.matches(className)) {
+                if (node.nodeType === 1 && node.matches(prevName)) {
                     applyDragger([node]);
                 }
             });
@@ -97,14 +112,19 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
-// Recieve Backlog
-// document.addEventListener('DOMContentLoaded', () => {
-//     dragger('.backlog-item', todoItems)
-//     dragger('.backlog-item', inProgressItems)
-//     dragger('.backlog-item', FinishedItems)
-// })
 
-// function renderStoredElement() {
+// Function to restore items from localStorage
+function restoreItems(itemKey, parentNode) {
+    let storedItems = JSON.parse(localStorage.getItem(itemKey)) || [];
+    storedItems.forEach(itemHTML => {
+        let div = document.createElement('div');
+        div.innerHTML = itemHTML;
+        parentNode.appendChild(div.firstElementChild);
+    });
+}
 
-// }
-// console.log(JSON.parse(localStorage.getItem('todo-item')))
+// Restore items on page load
+document.addEventListener('DOMContentLoaded', () => {
+    restoreItems('.backlog-item', todoItems);
+});
+
