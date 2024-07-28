@@ -17,11 +17,26 @@ function saveToLocalStorage(itemKey, item) {
     localStorage.setItem(itemKey, JSON.stringify(existingItems));
 }
 
+
 function saveItems(itemKey, listOfClass) {
+    let itemsArray = [];
     listOfClass.forEach(item => {
-        saveToLocalStorage(itemKey, item)
+        itemsArray.push(item.outerHTML);
     })
+    // Save the new array to localStorage, replacing the old data
+    localStorage.setItem(itemKey, JSON.stringify(itemsArray));
 }
+
+function saveFinalList() {
+    let finalList = [];
+    let finalItemsAllTogether = document.querySelectorAll('.finished-items')
+    finalItemsAllTogether.forEach(e => {
+        finalList.push(e)
+    })
+
+    saveItems('.final-item', finalList)
+}
+
 
 function formatDate(date) {
     const months = [
@@ -61,7 +76,7 @@ function dragger(prevName, parentNode, newClass) {
                 const handleDragOver = (e) => {
                     e.preventDefault();
                 };
-
+                
                 const handleDrop = (e) => {
                     e.preventDefault();
                     // Check if the item is being moved to a different parent
@@ -78,8 +93,10 @@ function dragger(prevName, parentNode, newClass) {
                         // Save updated state to localStorage
                         saveItems(prevName, document.querySelectorAll(prevName));
                     }
+                    saveFinalList()
+                    selected = null;
 
-                }
+                };
                 parentNode.addEventListener('dragover', handleDragOver);
                 parentNode.addEventListener('drop', handleDrop);
 
@@ -97,7 +114,7 @@ function dragger(prevName, parentNode, newClass) {
     applyDragger(items);
 
     // Save initial items to localStorage
-    // saveItems(prevName, items);
+    saveItems(prevName, items);
 
     // Observe for new items being added to the DOM
     const observer = new MutationObserver(mutations => {
@@ -125,13 +142,16 @@ function removeItemFromLocalStorage(itemKey, itemHTML) {
 }
 
 // Function to restore items from localStorage
-function restoreItems(itemKey, parentNode) {
+function restoreItems(itemKey, parentId) {
     let storedItems = JSON.parse(localStorage.getItem(itemKey)) || [];
-    storedItems.forEach(itemHTML => {
-        let div = document.createElement('div');
-        div.innerHTML = itemHTML;
-       document.getElementById(parentNode).appendChild(div.firstElementChild);
-    });
+    let parentNode = document.getElementById(parentId);
+    if (parentNode) {
+        storedItems.forEach(itemHTML => {
+            let div = document.createElement('div');
+            div.innerHTML = itemHTML;
+            parentNode.appendChild(div.firstElementChild);
+        });
+    }
 }
 
 // Todo Recieve Backlog
@@ -141,10 +161,9 @@ document.addEventListener('DOMContentLoaded', () => {
     dragger('.inprogress-item', FinishedItems, 'final-item ');
 
     restoreItems('.backlog-item', 'backlog-items');
-    restoreItems('.todo-item', 'todo-items');
-    restoreItems('.inprogress-item', 'inprogress-items');
+    // restoreItems('.todo-item', 'todo-items');
+    // restoreItems('.inprogress-item', 'inprogress-items');
 });
-
 
 
 // Restore items on page load
