@@ -6,6 +6,28 @@ const FinishedItems = document.getElementById('finished-items');
 // const storedBacklog = JSON.parse(localStorage.getItem('backlogs'))
 
 
+// Function to restore items from localStorage
+function restoreItems(itemKey, parentId) {
+    let storedItems = JSON.parse(localStorage.getItem(itemKey)) || [];
+    let parentNode = document.getElementById(parentId);
+    if (parentNode) {
+        storedItems.forEach(itemHTML => {
+            let div = document.createElement('div');
+            div.innerHTML = itemHTML;
+            parentNode.appendChild(div.firstElementChild);
+        });
+    }
+}
+
+
+
+if (localStorage.getItem('.backlog-item') || localStorage.getItem('.todo-item') || localStorage.getItem('.inprogress-item') || localStorage.getItem('.final-item')) {
+    restoreItems('.backlog-item', 'backlog-items');
+    restoreItems('.todo-item', 'todo-items');
+    restoreItems('.inprogress-item', 'inprogress-items');
+    restoreItems('.final-item', 'finished-items');
+}
+
 function saveToLocalStorage(itemKey, item) {
     // Retrieve existing items from localStorage or create a new array if none exists
     let existingItems = JSON.parse(localStorage.getItem(itemKey)) || [];
@@ -29,7 +51,7 @@ function saveItems(itemKey, listOfClass) {
 
 function saveFinalList() {
     let finalList = [];
-    let finalItemsAllTogether = document.querySelectorAll('.finished-items')
+    let finalItemsAllTogether = document.querySelectorAll('.final-item')
     finalItemsAllTogether.forEach(e => {
         finalList.push(e)
     })
@@ -92,8 +114,10 @@ function dragger(prevName, parentNode, newClass) {
 
                         // Save updated state to localStorage
                         saveItems(prevName, document.querySelectorAll(prevName));
+
+                        // Save items to final List
+                        saveFinalList()
                     }
-                    saveFinalList()
                     selected = null;
 
                 };
@@ -141,29 +165,15 @@ function removeItemFromLocalStorage(itemKey, itemHTML) {
     localStorage.setItem(itemKey, JSON.stringify(existingItems)); // Save the updated array back to localStorage
 }
 
-// Function to restore items from localStorage
-function restoreItems(itemKey, parentId) {
-    let storedItems = JSON.parse(localStorage.getItem(itemKey)) || [];
-    let parentNode = document.getElementById(parentId);
-    if (parentNode) {
-        storedItems.forEach(itemHTML => {
-            let div = document.createElement('div');
-            div.innerHTML = itemHTML;
-            parentNode.appendChild(div.firstElementChild);
-        });
-    }
-}
 
 // Todo Recieve Backlog
 document.addEventListener('DOMContentLoaded', () => {
     dragger('.backlog-item', todoItems, 'todo-item');
     dragger('.todo-item', inProgressItems, 'inprogress-item');
     dragger('.inprogress-item', FinishedItems, 'final-item ');
-
-    restoreItems('.backlog-item', 'backlog-items');
-    // restoreItems('.todo-item', 'todo-items');
-    // restoreItems('.inprogress-item', 'inprogress-items');
 });
+
+
 
 
 // Restore items on page load
