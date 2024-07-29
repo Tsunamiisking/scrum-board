@@ -142,6 +142,7 @@ nav .nav-items a{
 }
 
 .index-main {
+    padding: 0px 30px;
     
 }
 .index-main .row{
@@ -150,9 +151,42 @@ nav .nav-items a{
     justify-content: space-between;
     overflow: hidden;
 }
+.index-main .col:nth-child(1) {
+    background-color: blue ;
+}
+.index-main .col:nth-child(2) {
+    background-color: red;
+
+}
 
 .hero-brand-bg {
     width: 400px;
     opacity: .5;
     color:#0c4160dc;
+    position: relative;
 }
+
+.book-img{
+    width: 300px;
+    position: absolute;
+    right: 100px;
+    top: 190px;
+}
+
+/* @media (min-width:360px) and (max-width: 760px) {
+    .index-main .row{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    .book-img{
+        width: 300px;
+        position: absolute;
+        right: 32%;
+        top: 330px;
+    }
+    nav .nav-items a{
+        font-size: 15px;
+    
+    }
+} */
