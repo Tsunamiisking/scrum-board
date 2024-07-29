@@ -1,7 +1,11 @@
 * {
     box-sizing: border-box;
+    font-family: "Jockey One", sans-serif;
+    font-weight: 400;
+}
 
-
+.bold-font{
+    font-weight: 500;
 }
 
 .container {
@@ -125,8 +129,14 @@ header{
     align-items: center;
     justify-content: space-between;
 }
-
 nav .nav-items li{
     display: inline-block;
     padding: 0 20px;
+
+}
+nav .nav-items a{
+    font-size: 17px;
+    text-decoration: none;
+    color: black;
+
 }
