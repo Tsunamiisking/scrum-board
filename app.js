@@ -174,8 +174,15 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
+// Hamburger Menu
 
+const hamburger = document.getElementById('hamburger')
+const navItems = document.getElementById('nav-items')
 
+hamburger.addEventListener("click", () => {
+    hamburger.classList.toggle("active");
+    navItems.classList.toggle("active");
+})
 // Restore items on page load
 // document.addEventListener('DOMContentLoaded', () => {
 //     restoreItems('.backlog-item', backlogItems);
