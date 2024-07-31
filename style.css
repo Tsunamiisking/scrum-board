@@ -1,7 +1,6 @@
 * {
     box-sizing: border-box;
     font-family: "Jockey One", sans-serif;
-    font-weight: 400;
 }
 
 .bold-font{
@@ -172,6 +171,12 @@ nav .nav-items a{
     right: 60px;
     border: 2px solid black;
 }
+.index-main .col h1 {
+    font-size: 40px;
+}
+.index-main .col p {
+    font-size: 16px;
+}
 
 @media (min-width:360px) and (max-width: 760px) {
     .index-main .row{
@@ -182,8 +187,70 @@ nav .nav-items a{
     nav .nav-items a{
         font-size: 15px;
     }
+    .index-main .col h1, .index-main .col p {
+        text-align: center;
+    }
 }
 
-.about-us h2 {
-    text-align: center;
+.about-us {
+    margin: 40px 0px;
+}
+
+.about-us .middle {
+    display: flex;
+    vertical-align: middle;
+    align-items: center;
+    justify-content: space-between;
+    margin-left: 50px;
+}
+.about-us .middle .left {
+    border: 2px solid black;
+    flex: 1;
+    padding: 0px 50px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    
+}
+.about-us .middle h3 {
+    font-size: 30px;
+    margin: 0;
+    
+}
+.about-us .middle h3 span {
+    color:#0C4160;
+    
+}
+.about-us .middle p {
+   font-size: 18px;
+   text-align: left;
+    
+}
+.about-us .middle .right{
+    display: flex;
+    flex-wrap: wrap;
+    border: 2px solid black;
+    flex: 2;
+    justify-content: center;
+
+}
+.about-us .middle svg {
+    opacity: .5;
+    width: 300px;
+    border: 2px solid black;
+}
+
+@media (min-width:360px) and (max-width: 1070px) {
+    .about-us .middle svg {
+        width: 300px;
+    }
+    .about-us .middle {
+        display: block;
+        margin: 0;
+    }
+    .about-us .middle p {
+        font-size: 18px;
+        text-align: center;
+         
+     }
 }
