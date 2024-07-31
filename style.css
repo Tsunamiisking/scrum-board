@@ -2,6 +2,9 @@
     box-sizing: border-box;
     font-family: "Jockey One", sans-serif;
 }
+header div {
+    margin-left: 20px;
+}
 
 .bold-font{
     font-weight: 500;
@@ -134,14 +137,29 @@ nav .nav-items li{
 
 }
 nav .nav-items a{
-    font-size: 17px;
+    font-size: 20px;
     text-decoration: none;
     color: black;
+    transition: .5s;
 
 }
-
+.hamburger {
+    display: none;
+    cursor: pointer;
+    margin-right: 20px;
+}
+.bar {
+    display: block;
+    width: 30px;
+    height: 3px;
+    margin: 5px auto;
+    -webkit-transition: all .3s ease-in-out;
+    transition: all .3s ease-in-out;
+    background-color: black;
+    border-radius: 10px;
+}
 .index-main {
-    padding: 0px 30px;
+    padding-left: 30px;
     
 }
 .index-main .row{
@@ -151,25 +169,25 @@ nav .nav-items a{
     overflow: hidden;
 }
 .index-main .col:nth-child(1) {
-    border: 2px solid black;
+    /* border: 2px solid black; */
 }
 .index-main .col:nth-child(2) {
     position: relative;
-    border: 2px solid black;
+    /* border: 2px solid black; */
 }
 
 .hero-brand-bg {
-    width: 400px;
-    opacity: .5;
+    width: 500px;
+    opacity: .4;
     color:#0c4160dc;
 }
 
 .book-img{
-    width: 300px;
+    width: 350px;
     position: absolute;
-    top: 100px;
-    right: 60px;
-    border: 2px solid black;
+    top: 140px;
+    right: 85px;
+    /* border: 2px solid black; */
 }
 .index-main .col h1 {
     font-size: 40px;
@@ -178,17 +196,38 @@ nav .nav-items a{
     font-size: 16px;
 }
 
-@media (min-width:360px) and (max-width: 760px) {
+@media (min-width:360px) and (max-width: 800px) {
+    .index-main {
+        padding: 0 30px;
+    }
     .index-main .row{
         display: flex;
         flex-direction: column;
         justify-content: center;
     }
     nav .nav-items a{
-        font-size: 15px;
+        font-size: 18px;
+    }
+    .hero-brand-bg {
+        width: 400px;
+    }
+    .book-img{
+        width: 300px;
+        top: 100px;
+        left: 40px;
+        /* border: 2px solid black; */
     }
     .index-main .col h1, .index-main .col p {
         text-align: center;
+    }
+    .nav-items {
+        display: none;
+    }
+    .hamburger {
+        display: block;
+    }
+    .hamburger.active .bar:nth-child(2) {
+        opacity: 0;
     }
 }
 
@@ -204,7 +243,7 @@ nav .nav-items a{
     margin-left: 50px;
 }
 .about-us .middle .left {
-    border: 2px solid black;
+    /* border: 2px solid black; */
     flex: 1;
     padding: 0px 50px;
     display: flex;
@@ -229,20 +268,27 @@ nav .nav-items a{
 .about-us .middle .right{
     display: flex;
     flex-wrap: wrap;
-    border: 2px solid black;
+    /* border: 2px solid black; */
     flex: 2;
     justify-content: center;
 
 }
-.about-us .middle svg {
-    opacity: .5;
+.about-us .right .img-div{
+    margin: 20px 20px;
+
+}
+.about-us .middle img {
     width: 300px;
-    border: 2px solid black;
+    border-radius: 50%;
+    /* border: 2px solid black; */
+}
+.about-us .right svg {
+    position: relative;
 }
 
 @media (min-width:360px) and (max-width: 1070px) {
-    .about-us .middle svg {
-        width: 300px;
+    .about-us .middle img {
+        width: 250px;
     }
     .about-us .middle {
         display: block;
