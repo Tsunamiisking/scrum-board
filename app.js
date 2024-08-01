@@ -73,18 +73,19 @@ function formatDate(date) {
     return `${month} ${day}, ${year}`;
 }
 
-
-document.getElementById('form').onsubmit = (e) => {
-    e.preventDefault();
-    let input = document.getElementById('backlog-value')
-    let backlogItem = document.createElement('div')
-    let date = new Date()
-    let formattedDate = formatDate(date)
-    backlogItem.innerHTML = `${input.value} -- ${formattedDate}`
-    backlogItem.setAttribute('draggable', true)
-    backlogItem.className = 'backlog-item'
-    document.getElementById('backlog-items').appendChild(backlogItem)
-    input.value = '';
+if (document.getElementById('form')) {
+    document.getElementById('form').onsubmit = (e) => {
+        e.preventDefault();
+        let input = document.getElementById('backlog-value')
+        let backlogItem = document.createElement('div')
+        let date = new Date()
+        let formattedDate = formatDate(date)
+        backlogItem.innerHTML = `${input.value} -- ${formattedDate}`
+        backlogItem.setAttribute('draggable', true)
+        backlogItem.className = 'backlog-item'
+        document.getElementById('backlog-items').appendChild(backlogItem)
+        input.value = '';
+    }
 }
 
 function dragger(prevName, parentNode, newClass) {
@@ -98,7 +99,7 @@ function dragger(prevName, parentNode, newClass) {
                 const handleDragOver = (e) => {
                     e.preventDefault();
                 };
-                
+
                 const handleDrop = (e) => {
                     e.preventDefault();
                     // Check if the item is being moved to a different parent
@@ -176,13 +177,30 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // Hamburger Menu
 
-const hamburger = document.getElementById('hamburger')
-const navItems = document.getElementById('nav-items')
+const hamburger = document.getElementById('hamburger');
+const navItems = document.getElementById('nav-items');
 
 hamburger.addEventListener("click", () => {
     hamburger.classList.toggle("active");
     navItems.classList.toggle("active");
+});
+
+document.querySelectorAll('.nav-link').forEach(n => {
+    n.addEventListener('click', () => {
+        hamburger.classList.remove("active")
+        navItems.classList.remove("active");
+    })
 })
+
+// document.onscroll = () => {
+//     hamburger.classList.remove("active");
+//     navItems.classList.remove("active");
+// }
+document.querySelector('.content').addEventListener('click', () => {
+    hamburger.classList.remove("active");
+    navItems.classList.remove("active");
+})
+
 // Restore items on page load
 // document.addEventListener('DOMContentLoaded', () => {
 //     restoreItems('.backlog-item', backlogItems);
