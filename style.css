@@ -245,6 +245,7 @@ nav .nav-items a{
         align-items: center;
         transition: .3s;
         background-color: #0c4160;
+        z-index: 100;
     }
     .nav-items a {
         margin: 5px 0;
@@ -285,7 +286,7 @@ nav .nav-items a{
     
 }
 .about-us .middle p {
-   font-size: 18px;
+   font-size: 20px;
    text-align: left;
     
 }
@@ -302,7 +303,7 @@ nav .nav-items a{
 
 }
 .about-us .middle img {
-    width: 300px;
+    width: 250px;
     border-radius: 50%;
     /* border: 2px solid black; */
 }
@@ -311,9 +312,6 @@ nav .nav-items a{
 }
 
 @media (min-width:360px) and (max-width: 1070px) {
-    .about-us .middle img {
-        width: 250px;
-    }
     .about-us .middle {
         display: block;
         margin: 0;
