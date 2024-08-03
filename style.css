@@ -324,57 +324,47 @@ nav .nav-items a{
 }
 
 /* Button from Universe.IO */
-/* From Uiverse.io by joe-watson-sbf */ 
+/* From Uiverse.io by mrhyddenn */ 
 .btn {
-    font-size: 17px;
-    background: transparent;
+    background: #fff;
     border: none;
-    padding: 1em 1.5em;
-    color: #FFFFFF;
+    padding: 5px 20px;
+    display: inline-block;
+    font-size: 15px;
+    font-weight: 600;
+    width: 120px;
     text-transform: uppercase;
-    position: relative;
-    transition: 0.5s ease;
     cursor: pointer;
+    transform: skew(-21deg);
+  }
+  
+  span {
+    display: inline-block;
+    transform: skew(21deg);
   }
   
   .btn::before {
-    content: "";
+    content: '';
     position: absolute;
-    left: 0;
+    top: 0;
     bottom: 0;
-    height: 2px;
-    width: 0;
-    background-color: #BAFF39;
-    transition: 0.5s ease;
+    right: 100%;
+    left: 0;
+    background: rgb(20, 20, 20);
+    opacity: 0;
+    z-index: -1;
+    transition: all 0.5s;
   }
   
   .btn:hover {
-    color: #1e1e2b;
-    transition-delay: 0.5s;
+    color: #fff;
   }
   
-  .btn:hover::before {
-    width: 100%;
-  }
-  
-  .btn::after {
-    content: "";
-    position: absolute;
+  button:hover::before {
     left: 0;
-    bottom: 0;
-    height: 0;
-    width: 100%;
-    background-color: #BAFF39;
-    transition: 0.4s ease;
-    z-index: -1;
+    right: 0;
+    opacity: 1;
   }
-  
-  .btn:hover::after {
-    height: 100%;
-    transition-delay: 0.4s;
-    color: aliceblue;
-  }
-  
 
 
 @keyframes slide-up {
