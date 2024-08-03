@@ -330,7 +330,7 @@ nav .nav-items a{
     background: transparent;
     border: none;
     padding: 1em 1.5em;
-    color: #ffedd3;
+    color: #FFFFFF;
     text-transform: uppercase;
     position: relative;
     transition: 0.5s ease;
@@ -344,7 +344,7 @@ nav .nav-items a{
     bottom: 0;
     height: 2px;
     width: 0;
-    background-color: #ffc506;
+    background-color: #BAFF39;
     transition: 0.5s ease;
   }
   
@@ -364,7 +364,7 @@ nav .nav-items a{
     bottom: 0;
     height: 0;
     width: 100%;
-    background-color: #ffc506;
+    background-color: #BAFF39;
     transition: 0.4s ease;
     z-index: -1;
   }
