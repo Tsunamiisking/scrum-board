@@ -5,13 +5,15 @@
     --white: #FFFFFF;
     --beige: #DDD0C8;
     --dark-grey:#323232;
+    --primary-color: #0c216067;
+
 
 }
 .scrum-body{
     background-color: var(--beige);
 }
 .index-body {
-    background-color: var(--beige);
+    background-color: va1r(--beige);
 }
 .scrum-body h3 {
     color: var(--dark-grey);
@@ -75,22 +77,22 @@ input:focus {
     font-size: 15px;
     background-color: var(--beige);
     color: var(--dark-grey);
-    transition: .3s;
+    transition: .5s;
 
 }
 
 .container button:hover {
-    background-color:var(--grey);
-    color: var(--white);
+    background-color:var(--dark-grey);
+    color: var(--beige);
 }
 
 .container button:active {
-    background-color: #0c4160af;
+    background-color: var(--grey);
 }
 
 .scrum-heading h2 {
     text-align: center;
-    color: var(--white);
+    color: var(--dark-grey);
     font-weight: 700;
     margin-top: 10px;
 }
@@ -122,7 +124,7 @@ input:focus {
     border-radius: 10px;
     /* height: max(400px, 100%); */
     height: clamp(300px, 50%, 100%);
-    background-color: var(--grey);
+    background-color: var(--primary-color);
 
     /* min-height: 400px; 
     height: auto; 
@@ -161,7 +163,7 @@ nav .nav-items li {
 nav .nav-items a {
     font-size: 20px;
     text-decoration: none;
-    color: var(--white);
+    color: var(--dark-grey);
     transition: .5s;
 
 }
@@ -208,7 +210,7 @@ nav .nav-items a {
 .hero-brand-bg {
     width: 500px;
     opacity: .4;
-    color: #0c4160dc;
+    color: --p;
 }
 
 .book-img {
