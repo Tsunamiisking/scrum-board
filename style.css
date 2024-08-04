@@ -20,6 +20,11 @@
     background-repeat: no-repeat;
     background-size: cover;
 }
+.index-main .row .col h1 span, .about-us .middle .left h3 span{
+    /* color: black; */
+  -webkit-text-fill-color:var(--white); /* Will override color (regardless of order) */
+  -webkit-text-stroke: 1px var(--dark-grey);
+}
 
 /* .content {
     background: url(/images/Search-removebg-preview.png);
@@ -338,11 +343,6 @@ nav .nav-items a {
 .about-us .middle h3 {
     font-size: 30px;
     margin: 0;
-
-}
-
-.about-us .middle h3 span {
-    color: #0C4160;
 
 }
 
