@@ -435,4 +435,30 @@ nav .nav-items a {
 }
 
 
+.gallery-grid{
+    display: grid;
+    grid-template-columns: 1fr;
+    border: 2px solid black;
+}
+
+.flex{
+    display: flex;
+    border: 2px solid black;
+}
+.flex:nth-child(1){
+    flex: 2;
+    border: 2px solid black;
+}
+
+.flex:nth-child(2){
+    flex: 1;
+    border: 2px solid black;
+}
+
+.flex .long img {
+    width: 400px;
+}
+.flex .short img {
+    width: 300px;
+}
 @keyframes slide-up {}
