@@ -11,11 +11,8 @@
 }
 
 .scrum-body {
-    /* background-color: var(--beige);
-    background-color: var(--beige); */
-    background: url(/images/Search-removebg-preview.png);
-    background-repeat: no-repeat;
-    background-size: cover;
+    background-color: var(--beige);
+    background-color: var(--beige);
 }
 
 .index-body {

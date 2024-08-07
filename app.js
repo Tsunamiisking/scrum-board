@@ -200,9 +200,3 @@ document.querySelector('.content').addEventListener('click', () => {
     hamburger.classList.remove("active");
     navItems.classList.remove("active");
 })
-
-// Restore items on page load
-// document.addEventListener('DOMContentLoaded', () => {
-//     restoreItems('.backlog-item', backlogItems);
-// });
-
