@@ -180,15 +180,19 @@ document.addEventListener('DOMContentLoaded', () => {
 const hamburger = document.getElementById('hamburger');
 const navItems = document.getElementById('nav-items');
 
-hamburger.addEventListener("click", () => {
-    hamburger.classList.toggle("active");
-    navItems.classList.toggle("active");
-});
+if (hamburger) {
+    hamburger.addEventListener("click", () => {
+        hamburger.classList.toggle("active");
+        navItems.classList.toggle("active");
+        document.body.classList.toggle('noscroll');
+    });
+}
 
 document.querySelectorAll('.nav-link').forEach(n => {
     n.addEventListener('click', () => {
         hamburger.classList.remove("active")
         navItems.classList.remove("active");
+        document.body.classList.remove('noscroll');
     })
 })
 
@@ -196,7 +200,28 @@ document.querySelectorAll('.nav-link').forEach(n => {
 //     hamburger.classList.remove("active");
 //     navItems.classList.remove("active");
 // }
-document.querySelector('.content').addEventListener('click', () => {
-    hamburger.classList.remove("active");
-    navItems.classList.remove("active");
+if (document.querySelector('.content')) {
+    document.querySelector('.content').addEventListener('click', () => {
+        hamburger.classList.remove("active");
+        navItems.classList.remove("active");
+    })
+}
+
+
+// Delete 
+
+function deleteScrumActivity(classNameOfElement) {
+    document.querySelectorAll(classNameOfElement).forEach(item => {
+        item.addEventListener('dblclick', () => {
+            item.remove();
+        })
+    })
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    deleteScrumActivity(".final-item")
+    deleteScrumActivity(".backlog-item")
+    deleteScrumActivity(".inprogress-item")
+    deleteScrumActivity(".todo-item")
 })
+

@@ -9,6 +9,9 @@
 
 
 }
+body.noscroll {
+    overflow: hidden;
+}
 p{
     font-size: 17px;
 }
@@ -167,8 +170,9 @@ input:focus {
 } */
 .container div span h3 {
     text-align: center;
-    padding: 5px;
+    padding: 10px;
     margin: 10px 0;
+    font-size: 16px;
 }
 
 header {
