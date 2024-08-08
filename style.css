@@ -9,7 +9,13 @@
 
 
 }
-
+h1{
+    font-size: 40px;
+}
+h3 {
+    color: black;
+    font-size: 30px;
+}
 .scrum-body {
     background-color: var(--beige);
     background-color: var(--beige);
@@ -159,7 +165,6 @@ input:focus {
 .container div span h3 {
     text-align: center;
     padding: 5px;
-    font-size: 20px;
     margin: 10px 0;
 }
 
@@ -240,9 +245,7 @@ nav .nav-items a {
     /* border: 2px solid black; */
 }
 
-.index-main .col h1 {
-    font-size: 40px;
-}
+
 
 .index-main .col p {
     font-size: 16px;
@@ -342,7 +345,6 @@ nav .nav-items a {
 }
 
 .about-us .middle h3 {
-    font-size: 30px;
     margin: 0;
 
 }
@@ -434,31 +436,48 @@ nav .nav-items a {
     opacity: 1;
 }
 
-
+.gallery-section{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+.gallery-section .text h3 span{
+     /* color: black; */
+  -webkit-text-fill-color:var(--white); /* Will override color (regardless of order) */
+  -webkit-text-stroke: 1px var(--dark-grey);
+}
+.gallery-section .text {
+    text-align: center;
+}
 .gallery-grid{
     display: grid;
-    grid-template-columns: 1fr;
-    border: 2px solid black;
+    grid-template-columns: 1fr 1fr 1fr;
+    /* border: 2px solid black; */
+}
+.gallery-grid div {
+    margin: 20px;
 }
 
-.flex{
-    display: flex;
-    border: 2px solid black;
+.gallery-grid img {
+    width: 350px;
+    border-radius: 10px;
 }
-.flex:nth-child(1){
-    flex: 2;
-    border: 2px solid black;
+@media (max-width: 1070px ) {
+    .gallery-grid{
+        grid-template-columns: 1fr 1fr;
+        /* border: 2px solid black; */
+    }
+    .gallery-grid img {
+        width: 300px;
+        border-radius: 10px;
+    }
+}
+@media (max-width: 760px ) {
+    .gallery-grid img {
+        width: 200px;
+        border-radius: 10px;
+    }
 }
 
-.flex:nth-child(2){
-    flex: 1;
-    border: 2px solid black;
-}
-
-.flex .long img {
-    width: 400px;
-}
-.flex .short img {
-    width: 300px;
-}
 @keyframes slide-up {}
