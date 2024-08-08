@@ -9,6 +9,9 @@
 
 
 }
+p{
+    font-size: 17px;
+}
 h1{
     font-size: 40px;
 }
@@ -222,9 +225,9 @@ nav .nav-items a {
     overflow: hidden;
 }
 
-.index-main .col:nth-child(1) {
-    /* border: 2px solid black; */
-}
+/* .index-main .col:nth-child(1) {
+    border: 2px solid black;
+} */
 
 .index-main .col:nth-child(2) {
     position: relative;
@@ -350,9 +353,7 @@ nav .nav-items a {
 }
 
 .about-us .middle p {
-    font-size: 20px;
     text-align: left;
-
 }
 
 .about-us .middle .right {
