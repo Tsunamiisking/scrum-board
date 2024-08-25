@@ -5,6 +5,28 @@ const inProgressItems = document.getElementById('inprogress-items');
 const FinishedItems = document.getElementById('finished-items');
 // const storedBacklog = JSON.parse(localStorage.getItem('backlogs'))
 
+// Import the functions you need from the SDKs you need
+import { initializeApp } from "firebase/app";
+import { getAnalytics } from "firebase/analytics";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
+
+// Your web app's Firebase configuration
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+const firebaseConfig = {
+  apiKey: "AIzaSyA6IRxYGNtkLrOQRBDAWqKHtmdvAZnD20U",
+  authDomain: "testproject-86173.firebaseapp.com",
+  projectId: "testproject-86173",
+  storageBucket: "testproject-86173.appspot.com",
+  messagingSenderId: "380633214581",
+  appId: "1:380633214581:web:029a21afeba851e871d23c",
+  measurementId: "G-Y19W8ECLQZ"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);
+
 
 // Function to restore items from localStorage
 function restoreItems(itemKey, parentId) {
@@ -214,6 +236,7 @@ function deleteScrumActivity(classNameOfElement) {
     document.querySelectorAll(classNameOfElement).forEach(item => {
         item.addEventListener('dblclick', () => {
             item.remove();
+            removeItemFromLocalStorage(classNameOfElement, item.outerHTML)
         })
     })
 }
